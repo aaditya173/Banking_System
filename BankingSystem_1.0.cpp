@@ -1,3 +1,4 @@
+// Basic Banking Console System using (Data Structure Array).
 #include <iostream>
 using namespace std;
 
@@ -147,10 +148,16 @@ void closeAccount()
 }
 void showAllAccount()
 {
-    for (int i = 0; i < accountNo; i++)
+    if(accountNo>0){
+        for (int i = 0; i < accountNo; i++)
+        {
+            cout << "Name is : " << acc[i].firstName << " " << acc[i].lastName << endl;
+            cout << "Account Number is : " << acc[i].accountNumber << endl;
+            cout << "Mobile Number is : " << acc[i].mobileNo << endl;
+        }
+    }
+    else
     {
-        cout << "Name is : " << acc[i].firstName << " " << acc[i].lastName << endl;
-        cout << "Account Number is : " << acc[i].accountNumber << endl;
-        cout << "Mobile Number is : " << acc[i].mobileNo << endl;
+        cout << "No Record Found. " << endl;    
     }
 }
