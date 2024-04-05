@@ -1,13 +1,14 @@
-// Basic Banking Console System using (Data Structure Array).
+// Basic Banking Console System using (Data Structure Array
 #include <iostream>
 using namespace std;
 
-static int accountNo = 0;
+static int accountNo = -1;
 
 struct Account
 {
     string firstName, lastName;
-    int mobileNo, accountNumber, balance;
+    string mobileNo;
+    int accountNumber, balance;
 } acc[500];
 
 void openAccount();
@@ -67,16 +68,28 @@ int main()
 
 void openAccount()
 {
+    string firstName, lastName, mobile;
     cout << "Enter First Name : ";
-    cin >> acc[accountNo].firstName;
+    cin >> firstName;
     cout << "Enter Last Name : ";
-    cin >> acc[accountNo].lastName;
+    cin >> lastName;
     cout << "Enter Mobile Number : ";
-    cin >> acc[accountNo].mobileNo;
-    acc[accountNo].accountNumber = accountNo;
-    acc[accountNo].balance = 0;
-    cout << "Account Created Successfully" << accountNo << endl;
-    accountNo++;
+    cin >> mobile;
+    if (mobile.length() != 10)
+    {
+        cout << "Envalid Mobile Number" << endl;
+        return;
+    }
+    else
+    {
+        accountNo++;
+        acc[accountNo].firstName = firstName;
+        acc[accountNo].lastName = lastName;
+        acc[accountNo].mobileNo = mobile;
+        acc[accountNo].accountNumber = accountNo;
+        acc[accountNo].balance = 0;
+        cout << "Account Created Successfully" << endl;
+    }
 }
 void balanceEnquiry()
 {
@@ -85,7 +98,7 @@ void balanceEnquiry()
     cin >> ac;
     if (ac >= 0 && ac <= accountNo)
     {
-        cout << "Balance is : " << acc[ac].balance;
+        cout << "Balance is : " << acc[ac].balance << endl;
     }
     else
     {
@@ -120,8 +133,15 @@ void withdrawal()
     {
         cout << "Enter the amount to withdrawal : ";
         cin >> withdrawal;
-        acc[ac].balance -= withdrawal;
-        cout << "Withdrawal of " << withdrawal << " is successfull" << endl;
+        if (acc[ac].balance >= withdrawal)
+        {
+            acc[ac].balance -= withdrawal;
+            cout << "Withdrawal of " << withdrawal << " is successfull" << endl;
+        }
+        else
+        {
+            cout << "Insufficient Balance" << endl;
+        }
     }
     else
     {
@@ -148,8 +168,9 @@ void closeAccount()
 }
 void showAllAccount()
 {
-    if(accountNo>0){
-        for (int i = 0; i < accountNo; i++)
+    if (accountNo > 0)
+    {
+        for (int i = 0; i <= accountNo; i++)
         {
             cout << "Name is : " << acc[i].firstName << " " << acc[i].lastName << endl;
             cout << "Account Number is : " << acc[i].accountNumber << endl;
@@ -158,6 +179,6 @@ void showAllAccount()
     }
     else
     {
-        cout << "No Record Found. " << endl;    
+        cout << "No Record Found. " << endl;
     }
 }
