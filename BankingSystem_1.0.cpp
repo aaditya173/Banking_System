@@ -13,7 +13,7 @@ struct Account
 
 void openAccount();
 void balanceEnquiry();
-void deposite();
+void deposit();
 void withdrawal();
 void closeAccount();
 void showAllAccount();
@@ -27,7 +27,7 @@ int main()
         cout << "Select one option below" << endl;
         cout << "1. Open Account" << endl;
         cout << "2. Balance Enquiry" << endl;
-        cout << "3. Deposite" << endl;
+        cout << "3. Deposit" << endl;
         cout << "4. Withdrawal" << endl;
         cout << "5. Close an Account" << endl;
         cout << "6. Show all Account" << endl;
@@ -43,7 +43,7 @@ int main()
             balanceEnquiry();
             break;
         case 3:
-            deposite();
+            deposit();
             break;
         case 4:
             withdrawal();
@@ -106,17 +106,17 @@ void balanceEnquiry()
         return;
     }
 }
-void deposite()
+void deposit()
 {
-    int ac, deposite;
-    cout << "Enter the Account Number to deposite : ";
+    int ac, deposit;
+    cout << "Enter the Account Number to deposit : ";
     cin >> ac;
     if (ac >= 0 && ac <= accountNo)
     {
-        cout << "Enter the amount to deposite : ";
-        cin >> deposite;
-        acc[ac].balance += deposite;
-        cout << "Deposite of " << deposite << " is successfull" << endl;
+        cout << "Enter the amount to deposit : ";
+        cin >> deposit;
+        acc[ac].balance += deposit;
+        cout << "Deposit of " << deposit << " is successfull" << endl;
     }
     else
     {
@@ -156,8 +156,8 @@ void closeAccount()
     cin >> ac;
     if (ac >= 0 && ac <= accountNo)
     {
-        acc[ac].firstName = acc[ac].lastName = "null";
-        acc[ac].mobileNo = acc[ac].balance = 0;
+        acc[ac].firstName = acc[ac].lastName =  acc[ac].mobileNo = "null";
+        acc[ac].balance = 0;
         cout << "Account closed successfull" << endl;
     }
     else
@@ -168,7 +168,7 @@ void closeAccount()
 }
 void showAllAccount()
 {
-    if (accountNo > 0)
+    if (accountNo >= 0)
     {
         for (int i = 0; i <= accountNo; i++)
         {
