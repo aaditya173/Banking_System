@@ -295,7 +295,9 @@ void Bank::showAllAccount()
 {
     if (accounts.empty())
     {
+        cout << "---------------------------------------------" << endl;
         cout << "No Record Found" << endl;
+        cout << "---------------------------------------------" << endl;
         return;
     }
     else
