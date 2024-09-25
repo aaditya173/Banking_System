@@ -145,14 +145,16 @@ void Bank::openAccount()
     cin >> initialBalance;
     if (!validNumber(mobileNumber) || !validName(firstName) || !validName(lastName))
     {
+        cout << "---------------------------------------------" << endl;
         cout << "Invalid Details" << endl;
+        cout << "---------------------------------------------" << endl;
         return;
     }
     else
     {
         accounts.push_back(Account(firstName, lastName, mobileNumber, initialBalance));
         cout << "Account Created Successfully" << endl;
-        vector<Account>::iterator iter = accounts.end()-1;
+        vector<Account>::iterator iter = accounts.end() - 1;
         cout << "---------------------------------------------" << endl;
         cout << "Account Number is : " << (*iter).getAccountNumber() << endl;
         cout << "Name is : " << (*iter).getFirstName() << " " << (*iter).getLastName() << endl;
@@ -170,12 +172,18 @@ void Bank::balanceEnquiry()
     {
         if (i.getAccountNumber() == accountNumber)
         {
+            cout << "---------------------------------------------" << endl;
             cout << "Balance is : " << i.getBalance() << endl;
+            cout << "---------------------------------------------" << endl;
             return;
         }
     }
     if (!found)
+    {
+        cout << "---------------------------------------------" << endl;
         cout << "Invalid Account Number" << endl;
+        cout << "---------------------------------------------" << endl;
+    }
 }
 void Bank::deposit()
 {
@@ -191,19 +199,27 @@ void Bank::deposit()
             cin >> deposit;
             if (deposit <= 0)
             {
+                cout << "---------------------------------------------" << endl;
                 cout << "Entered invalid amount" << endl;
+                cout << "---------------------------------------------" << endl;
                 return;
             }
             else
             {
                 accounts[accountNumber].deposit(deposit);
+                cout << "---------------------------------------------" << endl;
                 cout << "Deposit of " << deposit << " is successfull" << endl;
+                cout << "---------------------------------------------" << endl;
                 return;
             }
         }
     }
     if (!found)
+    {
+        cout << "---------------------------------------------" << endl;
         cout << "Invalid Account Number" << endl;
+        cout << "---------------------------------------------" << endl;
+    }
 }
 void Bank::withdrawal()
 {
@@ -219,24 +235,34 @@ void Bank::withdrawal()
             cin >> withdrawal;
             if (withdrawal <= 0)
             {
+                cout << "---------------------------------------------" << endl;
                 cout << "Entered invalid amount" << endl;
+                cout << "---------------------------------------------" << endl;
                 return;
             }
             else if (withdrawal > accounts[accountNumber].getBalance())
             {
+                cout << "---------------------------------------------" << endl;
                 cout << "Insufficent Funds" << endl;
+                cout << "---------------------------------------------" << endl;
                 return;
             }
             else
             {
                 accounts[accountNumber].withdrawal(withdrawal);
+                cout << "---------------------------------------------" << endl;
                 cout << "Withdrawal of " << withdrawal << " is successfull" << endl;
+                cout << "---------------------------------------------" << endl;
                 return;
             }
         }
     }
     if (!found)
+    {
+        cout << "---------------------------------------------" << endl;
         cout << "Invalid Account Number" << endl;
+        cout << "---------------------------------------------" << endl;
+    }
 }
 void Bank::closeAccount()
 {
@@ -252,12 +278,18 @@ void Bank::closeAccount()
             accounts[accountNumber].setLastName("null");
             accounts[accountNumber].setMobileNumber("null");
             accounts[accountNumber].setBalance(0);
+            cout << "---------------------------------------------" << endl;
             cout << "Account closed successfull" << endl;
+            cout << "---------------------------------------------" << endl;
             return;
         }
     }
     if (!found)
+    {
+        cout << "---------------------------------------------" << endl;
         cout << "Invalid Account Number" << endl;
+        cout << "---------------------------------------------" << endl;
+    }
 }
 void Bank::showAllAccount()
 {
@@ -268,10 +300,10 @@ void Bank::showAllAccount()
     }
     else
     {
-        cout << "---------------------------------------------" << endl;
         vector<Account>::iterator iter = accounts.begin();
         while (iter != accounts.end())
         {
+            cout << "---------------------------------------------" << endl;
             cout << "Account Number is : " << (*iter).getAccountNumber() << endl;
             cout << "Name is : " << (*iter).getFirstName() << " " << (*iter).getLastName() << endl;
             cout << "Mobile Number is : " << (*iter).getMobileNumber() << endl;
