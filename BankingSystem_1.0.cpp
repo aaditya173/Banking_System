@@ -1,4 +1,4 @@
-// Basic Banking Console System using (Data Structure Array
+// Basic Banking Console System using Array Data Structure.
 #include <iostream>
 using namespace std;
 
@@ -22,6 +22,7 @@ int main()
 {
     int choice;
     cout << "Banking Console System" << endl;
+    cout << "---------------------------------------------" << endl;
     do
     {
         cout << "Select one option below" << endl;
@@ -77,7 +78,9 @@ void openAccount()
     cin >> mobile;
     if (mobile.length() != 10)
     {
+        cout << "---------------------------------------------" << endl;
         cout << "Envalid Mobile Number" << endl;
+        cout << "---------------------------------------------" << endl;
         return;
     }
     else
@@ -89,6 +92,11 @@ void openAccount()
         acc[accountNo].accountNumber = accountNo;
         acc[accountNo].balance = 0;
         cout << "Account Created Successfully" << endl;
+        cout << "---------------------------------------------" << endl;
+        cout << "Name is : " << acc[accountNo].firstName << " " << acc[accountNo].lastName << endl;
+        cout << "Account Number is : " << acc[accountNo].accountNumber << endl;
+        cout << "Mobile Number is : " << acc[accountNo].mobileNo << endl;
+        cout << "---------------------------------------------" << endl;
     }
 }
 void balanceEnquiry()
@@ -98,11 +106,15 @@ void balanceEnquiry()
     cin >> ac;
     if (ac >= 0 && ac <= accountNo)
     {
+        cout << "---------------------------------------------" << endl;
         cout << "Balance is : " << acc[ac].balance << endl;
+        cout << "---------------------------------------------" << endl;
     }
     else
     {
+        cout << "---------------------------------------------" << endl;
         cout << "Envalid Account Number" << endl;
+        cout << "---------------------------------------------" << endl;
         return;
     }
 }
@@ -116,11 +128,15 @@ void deposit()
         cout << "Enter the amount to deposit : ";
         cin >> deposit;
         acc[ac].balance += deposit;
+        cout << "---------------------------------------------" << endl;
         cout << "Deposit of " << deposit << " is successfull" << endl;
+        cout << "---------------------------------------------" << endl;
     }
     else
     {
+        cout << "---------------------------------------------" << endl;
         cout << "Envalid Account Number" << endl;
+        cout << "---------------------------------------------" << endl;
         return;
     }
 }
@@ -136,16 +152,22 @@ void withdrawal()
         if (acc[ac].balance >= withdrawal)
         {
             acc[ac].balance -= withdrawal;
+            cout << "---------------------------------------------" << endl;
             cout << "Withdrawal of " << withdrawal << " is successfull" << endl;
+            cout << "---------------------------------------------" << endl;
         }
         else
         {
+            cout << "---------------------------------------------" << endl;
             cout << "Insufficient Balance" << endl;
+            cout << "---------------------------------------------" << endl;
         }
     }
     else
     {
+        cout << "---------------------------------------------" << endl;
         cout << "Envalid Account Number" << endl;
+        cout << "---------------------------------------------" << endl;
         return;
     }
 }
@@ -156,13 +178,17 @@ void closeAccount()
     cin >> ac;
     if (ac >= 0 && ac <= accountNo)
     {
-        acc[ac].firstName = acc[ac].lastName =  acc[ac].mobileNo = "null";
+        acc[ac].firstName = acc[ac].lastName = acc[ac].mobileNo = "null";
         acc[ac].balance = 0;
+        cout << "---------------------------------------------" << endl;
         cout << "Account closed successfull" << endl;
+        cout << "---------------------------------------------" << endl;
     }
     else
     {
+        cout << "---------------------------------------------" << endl;
         cout << "Envalid Account Number" << endl;
+        cout << "---------------------------------------------" << endl;
         return;
     }
 }
@@ -172,13 +198,17 @@ void showAllAccount()
     {
         for (int i = 0; i <= accountNo; i++)
         {
+            cout << "---------------------------------------------" << endl;
             cout << "Name is : " << acc[i].firstName << " " << acc[i].lastName << endl;
             cout << "Account Number is : " << acc[i].accountNumber << endl;
             cout << "Mobile Number is : " << acc[i].mobileNo << endl;
+            cout << "---------------------------------------------" << endl;
         }
     }
     else
     {
+        cout << "---------------------------------------------" << endl;
         cout << "No Record Found. " << endl;
+        cout << "---------------------------------------------" << endl;
     }
 }
